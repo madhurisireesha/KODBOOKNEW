@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KodBook Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/home.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="homecontainer">
+        <div class="navcontainer">
+            <div>
+                <nav>
+                    <span th:text="${session.username}" class="uname"></span>
+                    <a href="/goHome"><i class="fas fa-home"></i> News feed</a>
+                    <a href="/openCreatePost"><i class="fas fa-plus-circle"></i> Create post</a>
+                    <a href="/openMyProfile"><i class="fas fa-user-circle"></i> My profile</a>
+                    <a href="/logout"><i class="fas fa-user-circle"></i> Logout</a>
+                </nav>
+            </div>
+            <div class="title">
+                <div>
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/003/654/555/small_2x/k-letter-logo-icon-for-business-and-company-vector.jpg" class="logo" alt="Logo">
+                </div>
+                <div>
+                    <h1 class="titext">OD BOOK</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="posts-container">
+            <span th:each="post : ${allPosts}">
+                <div class="post-card">
+                    <!-- Profile picture and Username -->
+                    <div class="post-header">
+                        <div class="profile-pic">
+                            <form action="/profileNew" method="post" >
+                                <input type="hidden" name="id" th:value="${post.user.id}">
+                                <button type="submit" style="border: none; background: none; padding: 0;"class="new">
+                                    <img th:if="${post.user.photoBase64}" 
+                                         th:src="'data:image/jpeg;base64,' + ${post.user.photoBase64}" 
+                                         alt="User Photo"/>
+                                </button>
+                            </form>
+                        </div>
+                        <span class="username" th:text="${post.user.username}">Unknown</span>
+                    </div>
+
+                    <!-- Post Image -->
+                    <div class="post-image">
+                        <img th:if="${post.photoBase64}" 
+                             th:src="'data:image/jpeg;base64,' + ${post.photoBase64}" 
+                             alt="Post Photo" />
+                    </div>
+
+                    <!-- Caption -->
+                    <p class="caption">
+                        <span th:text="${post.caption}"></span>
+                    </p>
+
+                    <!-- Likes -->
+                    <p class="likes">
+                        <strong>Likes:</strong> 
+                        <span th:text="${post.likes}"></span>
+                    </p>
+
+                    <!-- Like form -->
+                    <form action="/likePost" method="post" class="like-form">
+                        <input type="hidden" name="id" th:value="${post.id}">
+                        <input type="submit" value="LIKE POST">
+                    </form>
+
+                    <!-- Comment form -->
+                    <form action="/addComment" method="post" class="comment-form">
+                        <input type="hidden" name="id" th:value="${post.id}">
+                        <textarea name="comment" placeholder="Add a comment..." required></textarea>
+                        <input type="submit" value="Comment">
+                    </form>
+
+                    <!-- Displaying Comments -->
+                    <div class="comments-section">
+                        <h4 style="color:black">Comments:</h4>
+                        <ul>
+                            <li th:each="comment : ${post.comments}">
+                                <span th:text="${comment}"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+</body>
+</html>

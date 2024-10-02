@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>KodBook</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/index.css}">
+	</head>
+	<body>
+		<div class="indexcontainer">
+			<div class="title">
+				<div>
+				<img src="https://static.vecteezy.com/system/resources/thumbnails/003/654/555/small_2x/k-letter-logo-icon-for-business-and-company-vector.jpg" class="logo"></div><div><h1 class="titext">OD BOOK</h1></div>
+			</div>
+				<form action="/login" method="post" class="formcontainer">
+				<div class="labeltext">
+					<h3><label>USERNAME : </label></h3><br>
+					<input type = "text" name = "username">
+				</div><br>
+				<div class="labeltext">
+				<h3><label>PASSWORD : </label></h3><br>
+				<input type = "password" name = "password">
+				</div>
+			<br>
+			<div class="labeltext">
+			<input type="submit" value = "LOGIN" class="but">
+			</div>
+			<div class="labeltext">
+			<a href = "/openResetPassword" title="forgot password">Forgot password?</a>
+			<a href = "/openSignUp" title="create new account">Create new account</a>
+			</div>
+			</form>			
+		</div>
+	</body>
+</html>

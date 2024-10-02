@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>kodbook</title>
+<link rel="stylesheet" type="text/css" th:href="@{/signup.css}"/>
+</head>
+<body>
+	<div class="signupcontainer">
+		<div class="title">
+			<div>
+				<img src="https://static.vecteezy.com/system/resources/thumbnails/003/654/555/small_2x/k-letter-logo-icon-for-business-and-company-vector.jpg" class="logo"></div><div><h1 class="titext">OD BOOK</h1>
+			</div>
+		</div>
+		<div class="signup">
+		<form action="/signUp" method="post" class="formcontainer">
+			<div class="labeltext">			
+			<label>USERNAME:</label>
+			<input type="text" name="username" class="uname">
+			</div>
+		<div class="labeltext">
+			<label>EMAIL:</label>
+			<input type="email" name="email" class="uname">
+		</div>
+		<div class="labeltext">
+			<label>PASSWORD:</label>
+			<input type="password" name="password" class="uname">
+		</div>
+		<div class="labeltext">
+			<label>DOB:</label>
+			<input type="date" name="dob" class="uname">
+		</div>
+		
+		<div>
+		<label>GENDER:</label>
+			<label>Male</label><input type="radio" name="gender">
+			<label>Female</label><input type="radio" name="gender">
+			<label>Others</label><input type="radio" name="gender">
+		</div>
+		
+		<div>
+		<label>ACCOUNT TYPE:</label>
+		<label>Private:</label>:<input type="radio" name="accountType" value="private">
+		<label>public:<label><input type="radio" name="accountType" value="public"><br>
+		</div>
+		<hr/>
+		<div class="labeltext">			
+			<label>FRIENDS:</label>
+			<input type="text" name="friends" class="uname">
+			</div>
+		<div class="labeltext">
+			<input type="submit" value="SIGN UP" class="but">
+		</div>
+		<a href="/">Already have an account?Login instead</a>
+		</form>
+		</div>
+			
+	</div>
+</body>
+</html>

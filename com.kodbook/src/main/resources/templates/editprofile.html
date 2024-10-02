@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/edit.css}">
+</head>
+<body>
+    <div class="editcontainer">
+        <div class="navcontainer">
+            <div>
+                <nav>
+                    <span th:text="${session.username}" class="uname"></span>
+                    <a href="/goHome"><i class="fas fa-home"></i> News feed</a>
+                    <a href="/openCreatePost"><i class="fas fa-plus-circle"></i> Create post</a>
+                    <a href="/openMyProfile"><i class="fas fa-user-circle"></i> My profile</a>
+                    <a href="/logout"><i class="fas fa-user-circle"></i> Logout</a>
+                </nav>
+            </div>
+            <div class="title">
+                <div>
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/003/654/555/small_2x/k-letter-logo-icon-for-business-and-company-vector.jpg" class="logo" alt="Logo">
+                </div>
+                <div>
+                    <h1 class="titext">OD BOOK</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="formcontainer">
+            <form action="/updateProfile" method="post" enctype="multipart/form-data">
+                <h2 style="color:#424242;text-align:center;">Update Profile</h2>
+                <div>
+                <label>DOB:</label>
+                <input type="date" name="dob" class="blo">
+                </div>
+                <div>
+                <label>GENDER:</label>
+                <div style="width:100%;">
+                <label style="margin-right:5%;">M</label><input type="radio" name="gender" value="M" style="margin-right:10%;">
+                <label style="margin-right:5%;">F</label><input type="radio" name="gender" value="F" style="margin-right:10%;">
+               <label style="margin-right:5%;">O</label><input type="radio" name="gender" value="O">
+                
+                </div>
+                <div>
+                <label>CITY:</label>
+                <input type="text" name="city" class="blo">
+                </div>
+                <div>
+                <label>BIO:</label>
+                <input type="text" name="bio" class="blo">
+                </div>
+                <div>
+                <label>COLLEGE:</label>
+                <input type="text" name="college" class="blo">
+                </div>
+                <div>
+                
+                <div>
+                <label>ACCOUNT TYPE:</label>
+				<label>Private:</label>:<input type="radio" name="accountType" value="private">
+				<label>public:<label><input type="radio" name="accountType" value="public"><br>
+		
+                </div>
+                <div>
+                <label>FRIENDS:</label>
+			<input type="text" name="friends" class="blo">
+			</div>
+                </div>
+                
+                
+                <label>LINKED IN:</label>
+                <input type="text" name="linkedIn" class="blo">
+                </div>
+                <div>
+                <label>GIT HUB:</label>
+                <input type="text" name="gitHub" class="blo">
+                </div>
+                <div style="border:none;">
+                <input type="file" name="photo" accept="image/*" />
+                </div>
+                <input type="submit" value="Update Profile" class="fileupload">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

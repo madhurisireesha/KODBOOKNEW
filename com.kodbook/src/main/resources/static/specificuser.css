@@ -1,0 +1,207 @@
+*{
+	margin:0px;
+	border:0px;
+	padding:0px;
+	background-size:cover;
+	
+	box-sizing:border-box;
+}
+.navcontainer{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-around;
+	align-items:center;
+	background-color:#48cfcb;
+	padding:20px;
+}
+nav{
+	display:flex;
+	flex-direction:row;
+	justify-content:space-around;
+}
+nav a{
+	background-color:#229799;
+	padding:15px;
+	margin-left:30px;
+	margin-right:30px;
+	color:#f5f5f5;
+	text-decoration:none;
+	font-size:20px;
+	border-radius:20px;
+}
+nav a:hover{
+	background:none;
+	border:3px solid #229799;
+	color:#424242;
+}
+.profile-container{
+	background-color:#229799;		
+}
+.titext{
+	font-size:35px;
+	color:black;
+	font-style:italic;
+}
+.title{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+	align-items:center;
+	margin-right:20px;
+}
+.logo{
+	border-radius:45px;
+	height:40px;
+	width:40px;
+}
+.uname{
+	color:#424242;
+	font-size:40px;
+	font-weight:bold;
+	font-style:cursive;
+}
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    background-color:#229799;
+}
+
+/* Post card */
+.post-card {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* Post Header - Profile picture and Username */
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.username {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+/* Post Image */
+.post-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Caption */
+.caption {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Likes */
+.likes {
+    margin-bottom: 10px;
+}
+
+/* Like and Comment form */
+form {
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    background-color: #229799;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #229799;
+    opacity: 0.8;
+}
+
+/* Comment form styling */
+.comment-form textarea {
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid #7695FF;
+    border-radius: 10px;
+    font-size: 1em;
+    resize: none;
+}
+
+/* Comments section */
+.comments-section {
+    text-align: left;
+    margin-top: 15px;
+}
+
+.comments-section h4 {
+    color: #7695FF;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.comments-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.comments-section ul li {
+    background-color: #9DBDFF;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    color: #2A2A2A;
+}
+.dp{
+	height:20vh;
+	width:20vh;
+	border-radius:65px;
+}
+.bottom{
+	display:flex;
+	margin-left:40%;
+	align-items:center;
+	justify-content:center;
+	width:20vw;
+	margin-top:2%;
+	background-color:#f5f5f5;
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-left:60px;
+	padding-right:60px;
+	border-radius:20px;
+	box-shadow:0 0 40px #424242;
+	
+}
+li,.social{
+	list-style-type:none;
+	color:#229799;	
+}
