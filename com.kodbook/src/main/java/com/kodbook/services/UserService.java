@@ -20,5 +20,9 @@ public interface UserService {
 
 	User getSpecificUser(Long id);
 
+	User findByEmail(String email);
+
+	void updatePassword(User user, String newPassword);
+
 	
 }

@@ -161,6 +161,34 @@ public class NavController {
 		    return "index"; // Redirect or return a view name
 		}
 
+		//forgot password
+		@GetMapping("/openResetPassword")
+		public String forgotPassword() {
+			return "fgotpass";
+		}
+		@PostMapping("/forgotPassword")
+		public String processForgotPassword(@RequestParam String email,Model model) {
+			User user=userservice.findByEmail(email);
+			
+			System.out.println(user);
+			if(user!=null) {
+				model.addAttribute("user",user);
+				return "resetpassword";
+			}
+			return "signup";
+		}
+		@PostMapping("/resetPassword")
+		public String resetPassword(@RequestParam String email,
+				@RequestParam("password") String newPassword) {
+			System.out.print(email+" "+newPassword);
+			User user=userservice.findByEmail(email);
+			if(user!=null) {
+				userservice.updatePassword(user,newPassword);
+				return "index";
+			}
+			return "signup";
+		}
+		
 		
 		
 		@GetMapping("/logout")

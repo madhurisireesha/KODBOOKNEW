@@ -62,4 +62,18 @@ public class UserServiceImplementation implements UserService{
 		return repo.findById(id).get();
 	}
 
+	@Override
+	public User findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return repo.findByEmail(email);
+	}
+	@Override
+	public void updatePassword(User user, String newPassword) {
+		// TODO Auto-generated method stub
+		user.setPassword(newPassword);
+		repo.save(user);
+		
+	}
+
+
 }
