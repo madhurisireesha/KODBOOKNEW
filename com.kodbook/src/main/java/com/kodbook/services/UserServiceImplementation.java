@@ -57,4 +57,9 @@ public class UserServiceImplementation implements UserService{
 		return user;
 	}
 
+	@Override
+	public User getSpecificUser(Long id) {
+		return repo.findById(id).get();
+	}
+
 }

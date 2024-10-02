@@ -15,4 +15,6 @@ void createPost(Post post);
 
 	void updatePost(Post post);
 
+	
+
 }

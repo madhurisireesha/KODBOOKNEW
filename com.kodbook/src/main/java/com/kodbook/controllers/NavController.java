@@ -1,6 +1,7 @@
 
 package com.kodbook.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,17 +66,103 @@ public class NavController {
 		return "index";
 			
 		}
+		
+		//getting specific user data
 		@PostMapping("/profileNew")
-	    public String profiledetails(@RequestParam Long id,Model model) {
+	    public String profiledetails(@RequestParam Long id,Model model,HttpSession session) {
 	        // Logic to handle the user ID, e.g., fetching user details
 	        System.out.println("User ID: " + id);
-	        User user = userservice.getUserById(id);
-	        model.addAttribute("user",user);
-	        List<Post> userPosts=user.getPosts();
-			
-			model.addAttribute("userPosts",userPosts);
-	        return "specificuserprofile"; // Adjust as needed
+	        String loginuser = (String) session.getAttribute("username");
+	        //new
+		    User user = userservice.getUserById(id);
+		    String actype=user.getAccountType();
+		    String na=user.getUsername();
+		    List<String> frlist=user.getFriends();
+		    System.out.print("Friends list "+frlist);
+		    for(Object names:frlist) {
+		    	if(names.equals(loginuser)) {
+		    		 model.addAttribute("user",user);
+		 	        List<Post> userPosts=user.getPosts();
+		 	        model.addAttribute("userPosts",userPosts);
+		 	        return "specificuserprofile";
+		    	}
+		    }
+		    if(actype.equals("private")) {
+		    	User userreq=userservice.getSpecificUser(id);
+		    	model.addAttribute("user",userreq);
+		    	return "private";
+		    }
+		    model.addAttribute("user",user);
+ 	        List<Post> userPosts=user.getPosts();
+ 	        model.addAttribute("userPosts",userPosts);
+ 	        return "specificuserprofile";
 	    }
+		//end
+		
+		//notifications
+		//notifications
+		@PostMapping("/addNotification")
+		public String acceptRequest(@RequestParam Long id,Model model,HttpSession session)
+		{
+			System.out.println("User ID: " + id);
+	        String loginuser = (String) session.getAttribute("username");
+	        //new
+		    User user = userservice.getUserById(id);
+			
+			List<String> notify=user.getNotification();
+			if(notify==null) {
+				notify = new ArrayList<String>();
+			}
+			notify.add(loginuser);
+			
+			user.setNotification(notify);
+			userservice.addUser(user);
+			model.addAttribute("user",user);
+			System.out.println(notify);
+			return "confirmform";
+		}
+		//end
+		//displaying notifications
+		@GetMapping("/mynotifications")
+		public String mynotifications(Model model,HttpSession session) {
+			String loginuser = (String) session.getAttribute("username");
+			User user=userservice.getUser(loginuser);
+			List<String> notify=user.getNotification();
+			model.addAttribute("notification",notify);
+			
+			System.out.print(notify);
+			return "mynotifications";
+		}
+		
+		@PostMapping("/addmyfriend")
+		public String confirmfriend(@RequestParam String username,HttpSession session) {
+			String loginuser = (String) session.getAttribute("username");
+		       // You should dynamically get the logged-in user
+		    System.out.println("Requested username: " + username);
+		    
+		    User user=userservice.getUser(loginuser);
+		    if (user == null) {
+		        System.out.println("User not found: " + loginuser);
+		        return "error"; // Handle appropriately
+		    }
+		    
+		    List<String> frds = user.getFriends();
+		    if (frds == null) {
+		        frds = new ArrayList<>();
+		    }
+		    
+		    if (!frds.contains(username)) { // Avoid adding duplicates
+		        frds.add(username);
+		    }
+		    
+		    user.setFriends(frds); // Ensure you have a setter for friends
+		    userservice.addUser(user); // Save the user back to the database
+		    
+		    return "index"; // Redirect or return a view name
+		}
+
+		
+		
 		@GetMapping("/logout")
 		public String logout(HttpSession session) {
 			session.invalidate();
